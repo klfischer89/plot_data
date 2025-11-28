@@ -10,10 +10,13 @@ df = df.sample(500, random_state = 42) # sample of dataframe with 500 datasets w
 print(df.head()) # print head of dataframe
 
 sns.set_theme() # make plot have the seaborn theme
-sns.scatterplot(
-    x = df["carat"], 
-    y = df["price"], 
-    style = df["cut"],
-    style_order = ["Fair", "Good", "Very Good", "Premium", "Ideal"],
-    markers = ["o", "v", "8", "X", "*"]) # create scatterplot
+sns.scatterplot(data = df,
+                x = "carat", 
+                y = "price", 
+                hue = "cut",
+                s = 150,
+                palette = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff"],
+                style = "cut", 
+                style_order = ["Fair", "Good", "Very Good", "Premium", "Ideal"],
+                markers = ["o", "v", "8", "X", "*"])# create scatterplot
 plt.show() # show the plot
