@@ -10,7 +10,7 @@ df = df.sample(500, random_state = 42) # sample of dataframe with 500 datasets w
 print(df.head()) # print head of dataframe
 
 sns.set_theme() # make plot have the seaborn theme
-sns.scatterplot(data = df,
+ax = sns.scatterplot(data = df,
                 x = "carat", 
                 y = "price", 
                 hue = "cut",
@@ -19,4 +19,13 @@ sns.scatterplot(data = df,
                 style = "cut", 
                 style_order = ["Fair", "Good", "Very Good", "Premium", "Ideal"],
                 markers = ["o", "v", "8", "X", "*"])# create scatterplot
+
+handles, labels = ax.get_legend_handles_labels()
+ax_legend = ax.legend(handles=handles[1:], labels=labels[1:])
+ax_legend.shadow = True
+ax_legend.set_title("Legende...")
+
+ax.set_xlabel("Karat")
+ax.set_ylabel("Preis")
+
 plt.show() # show the plot
